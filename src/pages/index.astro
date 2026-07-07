@@ -1,287 +1,371 @@
 ---
 import "../styles/global.css";
+
+const menuSections = [
+  {
+    title: "Starters",
+    items: [
+      {
+        name: "Smoked Haddock Chowder",
+        description: "Cornish cream, leeks, potato, and warm sourdough.",
+        price: "&pound;9.80",
+      },
+      {
+        name: "Whipped Goat's Cheese",
+        description: "Beetroot relish, toasted seeds, garden herbs.",
+        price: "&pound;8.60",
+      },
+    ],
+  },
+  {
+    title: "Mains",
+    items: [
+      {
+        name: "Harbour Fish Pie",
+        description: "Market fish, prawns, parsley mash, buttered greens.",
+        price: "&pound;18.90",
+      },
+      {
+        name: "Chargrilled Ribeye",
+        description: "Peppercorn sauce, chips, watercress, roasted tomato.",
+        price: "&pound;26.50",
+      },
+      {
+        name: "Wild Mushroom Linguine",
+        description: "Garlic, thyme, parmesan, lemon, and rocket.",
+        price: "&pound;16.40",
+      },
+    ],
+  },
+  {
+    title: "Desserts",
+    items: [
+      {
+        name: "Sticky Toffee Pudding",
+        description: "Butterscotch sauce and vanilla bean ice cream.",
+        price: "&pound;7.90",
+      },
+      {
+        name: "Lemon Posset",
+        description: "Shortbread crumb, berries, and fresh mint.",
+        price: "&pound;7.20",
+      },
+    ],
+  },
+];
+
+const reviews = [
+  {
+    quote:
+      "A proper little find after a day by the sea. The fish pie was generous, the staff were kind, and the room felt quietly special.",
+    name: "Claire M.",
+    detail: "Manchester",
+    score: "4.8 / 5",
+  },
+  {
+    quote:
+      "Warm lighting, good wine, and no fuss. We booked for two and ended up staying for dessert and another glass.",
+    name: "Daniel R.",
+    detail: "Weekend visitor",
+    score: "4.9 / 5",
+  },
+  {
+    quote:
+      "Exactly what we wanted from a harbour town restaurant: fresh food, relaxed service, and a table that did not feel rushed.",
+    name: "Priya S.",
+    detail: "Family trip",
+    score: "4.7 / 5",
+  },
+];
+
+const hours = [
+  ["Monday - Thursday", "12:00 - 21:30"],
+  ["Friday", "12:00 - 22:30"],
+  ["Saturday", "11:30 - 22:30"],
+  ["Sunday", "12:00 - 20:00"],
+];
 ---
 
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>The Harbour Table | Restaurant Demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="The Harbour Table is a polished restaurant demo website for a British seaside town bistro."
+    />
+    <title>The Harbour Table | Seaside Restaurant Demo</title>
   </head>
 
-  <body class="bg-stone-950 text-stone-100">
-    <header class="border-b border-stone-800 bg-stone-950/90">
-      <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-        <div>
-          <p class="text-xs uppercase tracking-[0.35em] text-amber-300">Local Restaurant</p>
-          <h1 class="text-xl font-semibold">The Harbour Table</h1>
-        </div>
-
-        <a
-          href="#booking"
-          class="rounded-full bg-amber-300 px-5 py-2 text-sm font-semibold text-stone-950 hover:bg-amber-200"
+  <body class="bg-[#0d0b09] text-stone-100 antialiased">
+    <div class="site-shell min-h-screen overflow-hidden">
+      <header class="sticky top-0 z-40 border-b border-white/10 bg-[#0d0b09]/90 backdrop-blur-xl">
+        <nav
+          class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8"
+          aria-label="Main navigation"
         >
-          Book a Table
-        </a>
-      </div>
-    </header>
-
-    <main>
-      <section class="mx-auto grid max-w-6xl gap-10 px-6 py-20 md:grid-cols-2 md:items-center">
-        <div>
-          <p class="mb-4 text-sm uppercase tracking-[0.3em] text-amber-300">
-            Fresh food 路 Warm service 路 Cosy evenings
-          </p>
-
-          <h2 class="text-5xl font-bold leading-tight md:text-6xl">
-            Fresh food, warm service, and a better first impression online.
-          </h2>
-
-          <p class="mt-6 max-w-xl text-lg leading-8 text-stone-300">
-            This is a demo website for a small local restaurant. It is designed to look clean,
-            modern, and easy to use on mobile.
-          </p>
-
-          <div class="mt-8 flex flex-wrap gap-4">
-            <a
-              href="#menu"
-              class="rounded-full bg-amber-300 px-6 py-3 font-semibold text-stone-950 hover:bg-amber-200"
+          <a href="#" class="group flex items-center gap-3">
+            <span
+              class="grid h-11 w-11 place-items-center rounded-full border border-amber-300/40 bg-amber-300/10 text-sm font-semibold text-amber-200 shadow-[0_0_30px_rgba(245,158,11,0.18)]"
             >
-              View Menu
-            </a>
+              HT
+            </span>
+            <span>
+              <span class="block text-base font-semibold text-white">The Harbour Table</span>
+              <span class="block text-xs text-stone-400">Blackpool harbour bistro</span>
+            </span>
+          </a>
 
-            <a
-              href="#booking"
-              class="rounded-full border border-stone-600 px-6 py-3 font-semibold text-white hover:border-stone-300"
-            >
-              Book a Table
-            </a>
-          </div>
-        </div>
-
-        <div class="rounded-3xl border border-stone-800 bg-stone-900 p-4 shadow-2xl">
-          <div class="flex h-[420px] items-end rounded-2xl bg-gradient-to-br from-stone-700 via-stone-800 to-black p-8">
-            <div>
-              <p class="text-sm uppercase tracking-[0.3em] text-amber-300">
-                Tonight
-              </p>
-              <p class="mt-3 text-3xl font-semibold">
-                Dinner from 5:00 PM
-              </p>
-              <p class="mt-3 text-stone-300">
-                Walk-ins welcome. Weekend bookings recommended.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="menu" class="border-y border-stone-800 bg-stone-900/70">
-        <div class="mx-auto max-w-6xl px-6 py-16">
-          <p class="text-sm uppercase tracking-[0.3em] text-amber-300">
-            Popular dishes
-          </p>
-
-          <h2 class="mt-3 text-4xl font-semibold">
-            Simple menu, clear layout.
-          </h2>
-
-          <div class="mt-10 grid gap-6 md:grid-cols-3">
-            <article class="rounded-2xl border border-stone-800 bg-stone-950 p-6">
-              <h3 class="text-xl font-semibold">Mixed Grill Platter</h3>
-              <p class="mt-3 text-stone-300">
-                Grilled meats, chips, salad, and house sauce.
-              </p>
-              <p class="mt-5 text-amber-300">拢18.90</p>
-            </article>
-
-            <article class="rounded-2xl border border-stone-800 bg-stone-950 p-6">
-              <h3 class="text-xl font-semibold">Seafood Pasta</h3>
-              <p class="mt-3 text-stone-300">
-                Fresh seafood, tomato sauce, herbs, and parmesan.
-              </p>
-              <p class="mt-5 text-amber-300">拢16.50</p>
-            </article>
-
-            <article class="rounded-2xl border border-stone-800 bg-stone-950 p-6">
-              <h3 class="text-xl font-semibold">Chocolate Dessert</h3>
-              <p class="mt-3 text-stone-300">
-                Rich chocolate cake served with vanilla ice cream.
-              </p>
-              <p class="mt-5 text-amber-300">拢7.50</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="booking" class="bg-stone-900">
-        <div class="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-2">
-          <div>
-            <p class="text-sm uppercase tracking-[0.3em] text-amber-300">
-              Book a table
-            </p>
-
-            <h2 class="mt-3 text-4xl font-semibold">
-              Reserve your table tonight.
-            </h2>
-
-            <p class="mt-5 text-lg leading-8 text-stone-300">
-              This booking form will be connected after we deploy the website to Netlify.
-              For now, it is ready in the code.
-            </p>
+          <div class="hidden items-center gap-7 text-sm text-stone-300 lg:flex">
+            <a href="#menu" class="transition hover:text-amber-200">Menu</a>
+            <a href="#reviews" class="transition hover:text-amber-200">Reviews</a>
+            <a href="#hours" class="transition hover:text-amber-200">Hours</a>
+            <a href="#visit" class="transition hover:text-amber-200">Visit</a>
           </div>
 
-          <form
-            id="reservation-form"
-            name="reservation"
-            method="POST"
-            data-netlify="true" netlify="true"
-            netlify-honeypot="bot-field"
-            action="/forms.html"
-            class="rounded-3xl border border-stone-800 bg-stone-950 p-6"
+          <a
+            href="#booking"
+            class="rounded-full border border-amber-300/50 bg-amber-300 px-4 py-2 text-sm font-semibold text-stone-950 shadow-[0_14px_40px_rgba(245,158,11,0.18)] transition hover:bg-amber-200 sm:px-5"
           >
-            <input type="hidden" name="form-name" value="reservation" />
+            Book a Table
+          </a>
+        </nav>
+      </header>
 
-            <p class="hidden">
-              <label>
-                Do not fill this out:
-                <input name="bot-field" />
-              </label>
-            </p>
+      <main>
+        <section class="relative">
+          <div class="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-[1.02fr_0.98fr] lg:items-center lg:py-24">
+            <div class="max-w-3xl">
+              <p class="eyebrow">Seaside dining in a British holiday town</p>
+              <h1 class="mt-5 max-w-4xl text-5xl font-semibold leading-[1.02] text-white sm:text-6xl lg:text-7xl">
+                Fresh harbour cooking with a room worth lingering in.
+              </h1>
+              <p class="mt-6 max-w-2xl text-lg leading-8 text-stone-300">
+                A relaxed harbour-side bistro serving seasonal British plates, good wine,
+                and the kind of warm service visitors hope to find after a day by the sea.
+              </p>
 
-            <label class="block">
-              <span class="text-sm text-stone-300">Your name</span>
-              <input
-                name="name"
-                required
-                class="mt-2 w-full rounded-xl border border-stone-700 bg-stone-900 px-4 py-3 text-white outline-none focus:border-amber-300"
-              />
-            </label>
-
-            <label class="mt-4 block">
-              <span class="text-sm text-stone-300">Phone or email</span>
-              <input
-                name="contact"
-                required
-                class="mt-2 w-full rounded-xl border border-stone-700 bg-stone-900 px-4 py-3 text-white outline-none focus:border-amber-300"
-              />
-            </label>
-
-            <div class="mt-4 grid gap-4 md:grid-cols-2">
-              <label class="block">
-                <span class="text-sm text-stone-300">Date</span>
-                <input
-                  type="date"
-                  name="date"
-                  required
-                  class="mt-2 w-full rounded-xl border border-stone-700 bg-stone-900 px-4 py-3 text-white outline-none focus:border-amber-300"
-                />
-              </label>
-
-              <label class="block">
-                <span class="text-sm text-stone-300">Party size</span>
-                <select
-                  name="party_size"
-                  class="mt-2 w-full rounded-xl border border-stone-700 bg-stone-900 px-4 py-3 text-white outline-none focus:border-amber-300"
+              <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+                <a
+                  href="#menu"
+                  class="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 font-semibold text-stone-950 transition hover:bg-amber-200"
                 >
-                  <option>2 guests</option>
-                  <option>3 guests</option>
-                  <option>4 guests</option>
-                  <option>5+ guests</option>
-                </select>
-              </label>
+                  View Menu
+                </a>
+                <a
+                  href="#booking"
+                  class="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 font-semibold text-white transition hover:border-amber-200 hover:text-amber-100"
+                >
+                  Book a Table
+                </a>
+              </div>
+
+              <div class="mt-10 grid gap-4 text-sm text-stone-300 sm:grid-cols-3">
+                <div class="mini-stat">
+                  <span class="text-2xl font-semibold text-white">4.8</span>
+                  <span>average guest rating</span>
+                </div>
+                <div class="mini-stat">
+                  <span class="text-2xl font-semibold text-white">7 days</span>
+                  <span>open for lunch and dinner</span>
+                </div>
+                <div class="mini-stat">
+                  <span class="text-2xl font-semibold text-white">2 min</span>
+                  <span>walk from the promenade</span>
+                </div>
+              </div>
             </div>
 
-            <label class="mt-4 block">
-              <span class="text-sm text-stone-300">Message</span>
-              <textarea
-                name="message"
-                rows="4"
-                class="mt-2 w-full rounded-xl border border-stone-700 bg-stone-900 px-4 py-3 text-white outline-none focus:border-amber-300"
-              ></textarea>
-            </label>
+            <aside class="hero-panel relative mx-auto w-full max-w-xl rounded-lg border border-white/10 bg-[#17120e] p-5 shadow-2xl shadow-black/40">
+              <div class="rounded-lg border border-white/10 bg-[linear-gradient(145deg,#32251b,#0f0c0a_62%,#132522)] p-6 sm:p-8">
+                <div class="flex items-start justify-between gap-6">
+                  <div>
+                    <p class="text-sm text-amber-200">Tonight's table notes</p>
+                    <h2 class="mt-3 text-3xl font-semibold text-white">Dinner from 5:00 PM</h2>
+                  </div>
+                  <span class="rounded-full border border-emerald-300/30 bg-emerald-300/10 px-3 py-1 text-xs font-semibold text-emerald-100">
+                    Open today
+                  </span>
+                </div>
 
-            <button
-              type="submit"
-              class="mt-6 w-full rounded-full bg-amber-300 px-6 py-3 font-semibold text-stone-950 hover:bg-amber-200"
-            >
-              Request a Table
-            </button>
+                <div class="mt-10 grid gap-4 sm:grid-cols-2">
+                  <div class="rounded-lg border border-white/10 bg-black/20 p-4">
+                    <p class="text-xs text-stone-400">House favourite</p>
+                    <p class="mt-2 text-lg font-semibold text-white">Harbour Fish Pie</p>
+                    <p class="mt-2 text-sm leading-6 text-stone-300">Market fish, parsley mash, buttered greens.</p>
+                  </div>
+                  <div class="rounded-lg border border-white/10 bg-black/20 p-4">
+                    <p class="text-xs text-stone-400">Best time to visit</p>
+                    <p class="mt-2 text-lg font-semibold text-white">Sunset tables</p>
+                    <p class="mt-2 text-sm leading-6 text-stone-300">Ask for a window seat from 7:15 PM.</p>
+                  </div>
+                </div>
 
-            <p
-              id="reservation-status"
-              class="mt-4 hidden text-sm text-red-300"
-              role="alert"
-            ></p>
-          </form>
+                <div class="mt-8 rounded-lg border border-amber-200/20 bg-amber-200/10 p-5">
+                  <div class="flex items-center justify-between gap-4">
+                    <div>
+                      <p class="text-sm text-amber-100">Weekend booking advice</p>
+                      <p class="mt-1 text-sm leading-6 text-stone-300">
+                        Friday and Saturday evenings fill quickly during summer.
+                      </p>
+                    </div>
+                    <p class="text-right text-2xl font-semibold text-white">24h</p>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section id="menu" class="section-band border-y border-white/10">
+          <div class="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:py-20">
+            <div class="max-w-2xl">
+              <p class="eyebrow">Seasonal sample menu</p>
+              <h2 class="mt-4 text-4xl font-semibold text-white sm:text-5xl">
+                Familiar dishes, finished with care.
+              </h2>
+            </div>
+
+            <div class="mt-10 grid gap-6 lg:grid-cols-3">
+              {
+                menuSections.map((section) => (
+                  <article class="rounded-lg border border-white/10 bg-[#15110e] p-6">
+                    <h3 class="text-2xl font-semibold text-amber-100">{section.title}</h3>
+                    <div class="mt-6 space-y-6">
+                      {section.items.map((item) => (
+                        <div class="border-t border-white/10 pt-5 first:border-t-0 first:pt-0">
+                          <div class="flex items-start justify-between gap-4">
+                            <h4 class="text-lg font-semibold text-white">{item.name}</h4>
+                            <p class="shrink-0 font-semibold text-amber-200" set:html={item.price} />
+                          </div>
+                          <p class="mt-2 text-sm leading-6 text-stone-300">{item.description}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </article>
+                ))
+              }
+            </div>
+          </div>
+        </section>
+
+        <section id="reviews">
+          <div class="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:py-20">
+            <div class="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+              <div class="max-w-2xl">
+                <p class="eyebrow">Reviews from visitors</p>
+                <h2 class="mt-4 text-4xl font-semibold text-white sm:text-5xl">
+                  A place people remember after the weekend ends.
+                </h2>
+              </div>
+              <div class="rounded-lg border border-white/10 bg-white/[0.04] px-5 py-4">
+                <p class="text-sm text-stone-400">Guest rating</p>
+                <p class="mt-1 text-3xl font-semibold text-amber-200">4.8 / 5</p>
+              </div>
+            </div>
+
+            <div class="mt-10 grid gap-6 lg:grid-cols-3">
+              {
+                reviews.map((review) => (
+                  <article class="review-card rounded-lg border border-white/10 bg-[#15110e] p-6">
+                    <p class="text-sm font-semibold text-amber-200">{review.score}</p>
+                    <p class="mt-5 leading-7 text-stone-200">"{review.quote}"</p>
+                    <div class="mt-6 border-t border-white/10 pt-5">
+                      <p class="font-semibold text-white">{review.name}</p>
+                      <p class="text-sm text-stone-400">{review.detail}</p>
+                    </div>
+                  </article>
+                ))
+              }
+            </div>
+          </div>
+        </section>
+
+        <section id="hours" class="section-band border-y border-white/10">
+          <div class="mx-auto grid max-w-7xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:py-20">
+            <div>
+              <p class="eyebrow">Opening hours</p>
+              <h2 class="mt-4 text-4xl font-semibold text-white sm:text-5xl">
+                Lunch, dinner, and a slower Sunday.
+              </h2>
+              <p class="mt-5 max-w-xl leading-7 text-stone-300">
+                Times are written clearly for tourists checking quickly on mobile before
+                choosing where to eat.
+              </p>
+            </div>
+
+            <div class="rounded-lg border border-white/10 bg-[#15110e] p-6 sm:p-8">
+              <dl class="divide-y divide-white/10">
+                {
+                  hours.map(([day, time]) => (
+                    <div class="flex flex-col gap-2 py-5 first:pt-0 last:pb-0 sm:flex-row sm:items-center sm:justify-between">
+                      <dt class="font-semibold text-white">{day}</dt>
+                      <dd class="text-amber-100">{time}</dd>
+                    </div>
+                  ))
+                }
+              </dl>
+            </div>
+          </div>
+        </section>
+
+        <section id="visit">
+          <div class="mx-auto grid max-w-7xl gap-8 px-5 py-16 sm:px-8 lg:grid-cols-2 lg:py-20">
+            <div class="rounded-lg border border-white/10 bg-[#15110e] p-6 sm:p-8">
+              <p class="eyebrow">Visit</p>
+              <h2 class="mt-4 text-4xl font-semibold text-white">Find us near the harbour.</h2>
+              <p class="mt-5 text-lg leading-8 text-stone-300">
+                24 Harbour Lane, Blackpool, FY1 1AB
+              </p>
+              <a
+                href="https://www.google.com/maps"
+                target="_blank"
+                rel="noreferrer"
+                class="mt-8 inline-flex rounded-full bg-amber-300 px-6 py-3 font-semibold text-stone-950 transition hover:bg-amber-200"
+              >
+                Open in Google Maps
+              </a>
+            </div>
+
+            <div id="booking" class="booking-card rounded-lg border border-amber-200/20 bg-[#201712] p-6 sm:p-8">
+              <p class="eyebrow">Booking and contact</p>
+              <h2 class="mt-4 text-4xl font-semibold text-white">Reserve without a form.</h2>
+              <p class="mt-5 leading-7 text-stone-300">
+                For weekend evenings, please book at least one day in advance.
+              </p>
+
+              <div class="mt-8 grid gap-3 sm:grid-cols-2">
+                <a
+                  href="mailto:hello@harbourtable.example?subject=Table%20Reservation%20Request"
+                  class="inline-flex items-center justify-center rounded-full bg-amber-300 px-5 py-3 font-semibold text-stone-950 transition hover:bg-amber-200"
+                >
+                  Book by Email
+                </a>
+                <a
+                  href="tel:+441253123456"
+                  class="inline-flex items-center justify-center rounded-full border border-white/15 px-5 py-3 font-semibold text-white transition hover:border-amber-200 hover:text-amber-100"
+                >
+                  Call 01253 123456
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="border-t border-white/10 px-5 py-10 sm:px-8">
+        <div class="mx-auto flex max-w-7xl flex-col gap-5 text-sm text-stone-400 lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <p class="font-semibold text-white">The Harbour Table</p>
+            <p class="mt-2">24 Harbour Lane, Blackpool, FY1 1AB</p>
+          </div>
+          <div class="space-y-2 lg:text-right">
+            <p>01253 123456</p>
+            <p>Demo website for overseas small business outreach.</p>
+          </div>
         </div>
-      </section>
-    </main>
-
-    <footer class="border-t border-stone-800 px-6 py-8 text-center text-sm text-stone-500">
-      Demo website for local restaurant outreach.
-    </footer>
-
-    <script is:inline>
-      const form = document.getElementById("reservation-form");
-      const status = document.getElementById("reservation-status");
-
-      if (form) {
-        form.addEventListener("submit", async (event) => {
-          event.preventDefault();
-
-          if (status) {
-            status.classList.add("hidden");
-            status.textContent = "";
-          }
-
-          const formData = new FormData(form);
-          formData.set("form-name", "reservation");
-
-          const encoded = new URLSearchParams();
-
-          for (const [key, value] of formData.entries()) {
-            encoded.append(key, String(value));
-          }
-
-          try {
-            const response = await fetch("/forms.html", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
-              },
-              body: encoded.toString(),
-            });
-
-            if (response.ok) {
-              window.location.href = "/thanks.html";
-              return;
-            }
-
-            console.error(
-              "Netlify form submit failed:",
-              response.status,
-              response.statusText,
-            );
-
-            if (status) {
-              status.textContent =
-                "Sorry, something went wrong. Please call us directly.";
-              status.classList.remove("hidden");
-            }
-          } catch (error) {
-            console.error("Netlify form submit error:", error);
-
-            if (status) {
-              status.textContent =
-                "Sorry, something went wrong. Please call us directly.";
-              status.classList.remove("hidden");
-            }
-          }
-        });
-      }
-    </script>
+      </footer>
+    </div>
   </body>
 </html>
-
-
