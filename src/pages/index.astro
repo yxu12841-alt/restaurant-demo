@@ -132,11 +132,12 @@ import "../styles/global.css";
           </div>
 
           <form
+            id="reservation-form"
             name="reservation"
             method="POST"
             data-netlify="true" netlify="true"
             netlify-honeypot="bot-field"
-            action="/?submitted=true#booking"
+            action="/"
             class="rounded-3xl border border-stone-800 bg-stone-950 p-6"
           >
             <input type="hidden" name="form-name" value="reservation" />
@@ -206,6 +207,14 @@ import "../styles/global.css";
             >
               Request a Table
             </button>
+
+            <p
+              id="reservation-error"
+              class="mt-4 hidden text-sm text-red-300"
+              role="alert"
+            >
+              Sorry, something went wrong. Please call us directly.
+            </p>
           </form>
         </div>
       </section>
@@ -214,6 +223,47 @@ import "../styles/global.css";
     <footer class="border-t border-stone-800 px-6 py-8 text-center text-sm text-stone-500">
       Demo website for local restaurant outreach.
     </footer>
+
+    <script is:inline>
+      const reservationForm = document.getElementById("reservation-form");
+      const reservationError = document.getElementById("reservation-error");
+
+      if (reservationForm) {
+        reservationForm.addEventListener("submit", async (event) => {
+          event.preventDefault();
+
+          if (reservationError) {
+            reservationError.classList.add("hidden");
+          }
+
+          const formData = new FormData(reservationForm);
+          formData.set("form-name", "reservation");
+
+          try {
+            const response = await fetch("/", {
+              method: "POST",
+              headers: { "Content-Type": "application/x-www-form-urlencoded" },
+              body: new URLSearchParams(formData).toString(),
+            });
+
+            if (response.ok) {
+              window.location.href = "/thanks.html";
+              return;
+            }
+
+            console.error("Reservation form submit failed:", response.status);
+          } catch (error) {
+            console.error("Reservation form submit failed:", error);
+          }
+
+          if (reservationError) {
+            reservationError.textContent =
+              "Sorry, something went wrong. Please call us directly.";
+            reservationError.classList.remove("hidden");
+          }
+        });
+      }
+    </script>
   </body>
 </html>
 
