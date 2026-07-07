@@ -137,7 +137,7 @@ import "../styles/global.css";
             method="POST"
             data-netlify="true" netlify="true"
             netlify-honeypot="bot-field"
-            action="/"
+            action="/forms.html"
             class="rounded-3xl border border-stone-800 bg-stone-950 p-6"
           >
             <input type="hidden" name="form-name" value="reservation" />
@@ -209,12 +209,10 @@ import "../styles/global.css";
             </button>
 
             <p
-              id="reservation-error"
+              id="reservation-status"
               class="mt-4 hidden text-sm text-red-300"
               role="alert"
-            >
-              Sorry, something went wrong. Please call us directly.
-            </p>
+            ></p>
           </form>
         </div>
       </section>
@@ -225,25 +223,34 @@ import "../styles/global.css";
     </footer>
 
     <script is:inline>
-      const reservationForm = document.getElementById("reservation-form");
-      const reservationError = document.getElementById("reservation-error");
+      const form = document.getElementById("reservation-form");
+      const status = document.getElementById("reservation-status");
 
-      if (reservationForm) {
-        reservationForm.addEventListener("submit", async (event) => {
+      if (form) {
+        form.addEventListener("submit", async (event) => {
           event.preventDefault();
 
-          if (reservationError) {
-            reservationError.classList.add("hidden");
+          if (status) {
+            status.classList.add("hidden");
+            status.textContent = "";
           }
 
-          const formData = new FormData(reservationForm);
+          const formData = new FormData(form);
           formData.set("form-name", "reservation");
 
+          const encoded = new URLSearchParams();
+
+          for (const [key, value] of formData.entries()) {
+            encoded.append(key, String(value));
+          }
+
           try {
-            const response = await fetch("/", {
+            const response = await fetch("/forms.html", {
               method: "POST",
-              headers: { "Content-Type": "application/x-www-form-urlencoded" },
-              body: new URLSearchParams(formData).toString(),
+              headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+              },
+              body: encoded.toString(),
             });
 
             if (response.ok) {
@@ -251,15 +258,25 @@ import "../styles/global.css";
               return;
             }
 
-            console.error("Reservation form submit failed:", response.status);
-          } catch (error) {
-            console.error("Reservation form submit failed:", error);
-          }
+            console.error(
+              "Netlify form submit failed:",
+              response.status,
+              response.statusText,
+            );
 
-          if (reservationError) {
-            reservationError.textContent =
-              "Sorry, something went wrong. Please call us directly.";
-            reservationError.classList.remove("hidden");
+            if (status) {
+              status.textContent =
+                "Sorry, something went wrong. Please call us directly.";
+              status.classList.remove("hidden");
+            }
+          } catch (error) {
+            console.error("Netlify form submit error:", error);
+
+            if (status) {
+              status.textContent =
+                "Sorry, something went wrong. Please call us directly.";
+              status.classList.remove("hidden");
+            }
           }
         });
       }
