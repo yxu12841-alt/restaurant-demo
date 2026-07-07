@@ -1,0 +1,218 @@
+﻿---
+import "../styles/global.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>The Harbour Table | Restaurant Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+
+  <body class="bg-stone-950 text-stone-100">
+    <header class="border-b border-stone-800 bg-stone-950/90">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+        <div>
+          <p class="text-xs uppercase tracking-[0.35em] text-amber-300">Local Restaurant</p>
+          <h1 class="text-xl font-semibold">The Harbour Table</h1>
+        </div>
+
+        <a
+          href="#booking"
+          class="rounded-full bg-amber-300 px-5 py-2 text-sm font-semibold text-stone-950 hover:bg-amber-200"
+        >
+          Book a Table
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section class="mx-auto grid max-w-6xl gap-10 px-6 py-20 md:grid-cols-2 md:items-center">
+        <div>
+          <p class="mb-4 text-sm uppercase tracking-[0.3em] text-amber-300">
+            Fresh food · Warm service · Cosy evenings
+          </p>
+
+          <h2 class="text-5xl font-bold leading-tight md:text-6xl">
+            Fresh food, warm service, and a better first impression online.
+          </h2>
+
+          <p class="mt-6 max-w-xl text-lg leading-8 text-stone-300">
+            This is a demo website for a small local restaurant. It is designed to look clean,
+            modern, and easy to use on mobile.
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a
+              href="#menu"
+              class="rounded-full bg-amber-300 px-6 py-3 font-semibold text-stone-950 hover:bg-amber-200"
+            >
+              View Menu
+            </a>
+
+            <a
+              href="#booking"
+              class="rounded-full border border-stone-600 px-6 py-3 font-semibold text-white hover:border-stone-300"
+            >
+              Book a Table
+            </a>
+          </div>
+        </div>
+
+        <div class="rounded-3xl border border-stone-800 bg-stone-900 p-4 shadow-2xl">
+          <div class="flex h-[420px] items-end rounded-2xl bg-gradient-to-br from-stone-700 via-stone-800 to-black p-8">
+            <div>
+              <p class="text-sm uppercase tracking-[0.3em] text-amber-300">
+                Tonight
+              </p>
+              <p class="mt-3 text-3xl font-semibold">
+                Dinner from 5:00 PM
+              </p>
+              <p class="mt-3 text-stone-300">
+                Walk-ins welcome. Weekend bookings recommended.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="menu" class="border-y border-stone-800 bg-stone-900/70">
+        <div class="mx-auto max-w-6xl px-6 py-16">
+          <p class="text-sm uppercase tracking-[0.3em] text-amber-300">
+            Popular dishes
+          </p>
+
+          <h2 class="mt-3 text-4xl font-semibold">
+            Simple menu, clear layout.
+          </h2>
+
+          <div class="mt-10 grid gap-6 md:grid-cols-3">
+            <article class="rounded-2xl border border-stone-800 bg-stone-950 p-6">
+              <h3 class="text-xl font-semibold">Mixed Grill Platter</h3>
+              <p class="mt-3 text-stone-300">
+                Grilled meats, chips, salad, and house sauce.
+              </p>
+              <p class="mt-5 text-amber-300">£18.90</p>
+            </article>
+
+            <article class="rounded-2xl border border-stone-800 bg-stone-950 p-6">
+              <h3 class="text-xl font-semibold">Seafood Pasta</h3>
+              <p class="mt-3 text-stone-300">
+                Fresh seafood, tomato sauce, herbs, and parmesan.
+              </p>
+              <p class="mt-5 text-amber-300">£16.50</p>
+            </article>
+
+            <article class="rounded-2xl border border-stone-800 bg-stone-950 p-6">
+              <h3 class="text-xl font-semibold">Chocolate Dessert</h3>
+              <p class="mt-3 text-stone-300">
+                Rich chocolate cake served with vanilla ice cream.
+              </p>
+              <p class="mt-5 text-amber-300">£7.50</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="booking" class="bg-stone-900">
+        <div class="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-2">
+          <div>
+            <p class="text-sm uppercase tracking-[0.3em] text-amber-300">
+              Book a table
+            </p>
+
+            <h2 class="mt-3 text-4xl font-semibold">
+              Reserve your table tonight.
+            </h2>
+
+            <p class="mt-5 text-lg leading-8 text-stone-300">
+              This booking form will be connected after we deploy the website to Netlify.
+              For now, it is ready in the code.
+            </p>
+          </div>
+
+          <form
+            name="reservation"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            action="/thanks/"
+            class="rounded-3xl border border-stone-800 bg-stone-950 p-6"
+          >
+            <input type="hidden" name="form-name" value="reservation" />
+
+            <p class="hidden">
+              <label>
+                Do not fill this out:
+                <input name="bot-field" />
+              </label>
+            </p>
+
+            <label class="block">
+              <span class="text-sm text-stone-300">Your name</span>
+              <input
+                name="name"
+                required
+                class="mt-2 w-full rounded-xl border border-stone-700 bg-stone-900 px-4 py-3 text-white outline-none focus:border-amber-300"
+              />
+            </label>
+
+            <label class="mt-4 block">
+              <span class="text-sm text-stone-300">Phone or email</span>
+              <input
+                name="contact"
+                required
+                class="mt-2 w-full rounded-xl border border-stone-700 bg-stone-900 px-4 py-3 text-white outline-none focus:border-amber-300"
+              />
+            </label>
+
+            <div class="mt-4 grid gap-4 md:grid-cols-2">
+              <label class="block">
+                <span class="text-sm text-stone-300">Date</span>
+                <input
+                  type="date"
+                  name="date"
+                  required
+                  class="mt-2 w-full rounded-xl border border-stone-700 bg-stone-900 px-4 py-3 text-white outline-none focus:border-amber-300"
+                />
+              </label>
+
+              <label class="block">
+                <span class="text-sm text-stone-300">Party size</span>
+                <select
+                  name="party_size"
+                  class="mt-2 w-full rounded-xl border border-stone-700 bg-stone-900 px-4 py-3 text-white outline-none focus:border-amber-300"
+                >
+                  <option>2 guests</option>
+                  <option>3 guests</option>
+                  <option>4 guests</option>
+                  <option>5+ guests</option>
+                </select>
+              </label>
+            </div>
+
+            <label class="mt-4 block">
+              <span class="text-sm text-stone-300">Message</span>
+              <textarea
+                name="message"
+                rows="4"
+                class="mt-2 w-full rounded-xl border border-stone-700 bg-stone-900 px-4 py-3 text-white outline-none focus:border-amber-300"
+              ></textarea>
+            </label>
+
+            <button
+              type="submit"
+              class="mt-6 w-full rounded-full bg-amber-300 px-6 py-3 font-semibold text-stone-950 hover:bg-amber-200"
+            >
+              Request a Table
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-stone-800 px-6 py-8 text-center text-sm text-stone-500">
+      Demo website for local restaurant outreach.
+    </footer>
+  </body>
+</html>
